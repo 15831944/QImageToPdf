@@ -29,7 +29,7 @@ void image_to_pdf(
             QMatrix varMatrix;
             return varMatrix.rotate(  270. );
         }();
-        varImage.transformed( varMatrix,Qt::SmoothTransformation );
+        varImage = varImage.transformed( varMatrix,Qt::SmoothTransformation );
         std::swap( varImageHeight , varImageWidth );
     }
     /* width >= height */
