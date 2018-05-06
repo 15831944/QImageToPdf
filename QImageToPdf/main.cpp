@@ -16,7 +16,8 @@ void image_to_pdf(
     if( varImageWidth < 0.5 ){ return;  }
     if( varImageHeight < 0.5){ return;  }
 
-    QPrinter varPrinter(QPrinter::HighResolution); //最高分辨率
+    QPrinter varPrinter ; //
+    varPrinter.setResolution( 300 );//300dpi
     varPrinter.setPageSize(QPrinter::A4); //设置纸张尺寸是A4
     varPrinter.setOutputFormat(QPrinter::PdfFormat); //设置输出格式pdf
     varPrinter.setPageOrientation(QPageLayout::Landscape);//设置纸张水平
@@ -41,12 +42,17 @@ void image_to_pdf(
         ~Painter(){ this->end(); }
     } varPainter { &varPrinter } ;
     QRect varPainterViewPort = varPainter.viewport();
+
+    QPointF varDrawPoition = varPainterViewPort.topLeft() ;
     if( varP > 1.4142135623731 ){
         varImage = varImage.scaledToWidth( varPainterViewPort.width(),Qt::SmoothTransformation );
+        varDrawPoition.setY( std::abs(varPainterViewPort.height()-varImage.height())*0.5 );
     }else{
         varImage = varImage.scaledToHeight( varPainterViewPort.height(),Qt::SmoothTransformation );
+        varDrawPoition.setX( std::abs(varPainterViewPort.width()-varImage.width())*0.5 );
     }
-    varPainter.drawImage( varPainterViewPort.topLeft() , varImage );
+    varPainter.drawImage( varDrawPoition , varImage );
+
 }
 
 
