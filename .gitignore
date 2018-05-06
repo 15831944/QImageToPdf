@@ -4,3 +4,8 @@
 *.ilk
 *.pdb
 *.autosave
+*.stash
+*.o
+*.exe
+*.Debug
+*.Release
