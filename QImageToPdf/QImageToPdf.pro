@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core
+QT += gui
+QT += printsupport
 
 TARGET = QImageToPdf
 TEMPLATE = app
-
+CONFIG += console
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -24,11 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        MainWindow.cpp
+        main.cpp
 
-HEADERS += \
-        MainWindow.hpp
+HEADERS +=
 
-FORMS += \
-        MainWindow.ui
+FORMS +=
